@@ -1,8 +1,5 @@
 name: Build
-on:
-  workflow_dispatch:
-  push:
-    branches: [main]
+on: [push, workflow_dispatch]
 
 jobs:
   build:
@@ -11,7 +8,7 @@ jobs:
       matrix:
         config:
           - { name: Windows, os: windows-latest }
-          - { name: macOS,   os: macos-latest }
+          - { name: macOS, os: macos-latest }
           - { name: Android64, os: ubuntu-latest, target: Android64 }
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
